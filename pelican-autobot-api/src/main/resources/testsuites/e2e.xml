@@ -1,0 +1,209 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Pelican Test Plan" parallel="tests" thread-count="5">
+ 	<test name="Finance Report">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.financereport.GetFinanceReportByPurchaseOrderIdTest" >
+				<methods>
+					<include name="testFinanceReportByIdOfPurchaseOrderNewAcquisitionMultiLineItems" />
+				</methods>
+			</class>
+ 			<class name="com.autodesk.bsm.pelican.api.financereport.FinanceReportTest" >
+				<methods>
+					<include name="testFinanceReportWithAutoRenewalMultiLine" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+ 	<test name="Purchase Order">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.purchaseorder.SubmitPurchaseOrderTest" >
+				<methods>
+					<include name="testSubmitPOWithMultiLineItemWithCreditCardSuccess" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.purchaseorder.SubmitAndProcessSubscriptionRenewalTest" >
+				<methods>
+					<include name="testSuccessSubscriptionRenewalWithMultiLineItems" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.purchaseorder.SubmitAndProcessSubscriptionQuantityRequestTest" >
+				<methods>
+					<include name="testNewSubscriptionCreationWhenAddSeatsIsFulfilledWhenRenewalAuthPendingOrCharged" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.purchaseorder.SubmitAndProcessSubscriptionExtensionTest" >
+				<methods>
+					<include name="testSuccessProcessSubscriptionExtensionOrder" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.purchaseorder.GetPurchaseOrdersTest" >
+				<methods>
+					<include name="testBICPurchaseOrderForNewAcquisitionWithCreditCardWithOnlyOrderCompleteEmail" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.purchaseorder.GetPurchaseOrderByIdTest" >
+				<methods>
+					<include name="renewOrderWithPaypalForBicSubscription" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.purchaseorder.FulfillmentCallBackTest" >
+				<methods>
+					<include name="testSingleLineItemLegacyFulfillmentWithCreditCard" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.purchaseorder.AddPropertiesToPurchaseOrderTest" >
+				<methods>
+					<include name="testAddPropertiesToDeclinePurchaseOrderWithEncoding" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+    <test name="Get Offering">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.userofferings.GetUserOfferingsTest" >
+				<methods>
+					<include name="testGetUserOfferingsApiWithValidExternalKeyAndValidSubscriptionId" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.offerings.GetOfferingByIdTest" >
+				<methods>
+					<include name="testGetOfferingByIdForNewSubscriptionPlan" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.offerings.GetOfferingsV3Test" >
+				<methods>
+					<include name="testGetOfferingsWithMultipleFilters" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.offerings.GetOfferingsTest" >
+				<methods>
+					<include name="testGetOfferingsForOfferWithOutPrice" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Subscription Plan">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.subscriptionplan.GetSubscriptionPlansTest" >
+				<methods>
+					<include name="getSubscriptionPlansByProductLineExternalKey" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.subscriptionplan.GetSubscriptionPlanByIdTest" >
+				<methods>
+					<include name="testSubscriptionPlanWithOfferId" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+ 	<test name="Item">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.item.FindItemsTest" >
+				<methods>
+					<include name="getItemByTypeId" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Payment Profile">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.paymentprofile.GetPaymentProfilesTest" >
+				<methods>
+					<include name="getItetestSuccessGetPaymentProfilesForBluesnapPaymentProcessormByTypeId" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="User">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.user.AddUserTest" >
+				<methods>
+					<include name="testAddUser" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.user.FindUserByExternalKeyTest" >
+				<methods>
+					<include name="testGetUserByValidExternalKey" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.user.GdprUserTest" >
+				<methods>
+					<include name="testErrorGdprDeleteForUserWithActiveSubscription" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.user.UserRoleTest" >
+				<methods>
+					<include name="testAssignOneRoleToUserValidScenario" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Payment Profiles">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.paymentprofile.GetPaymentProfilesTest" >
+				<methods>
+					<include name="testSuccessGetPaymentProfilesForBluesnapPaymentProcessor" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Product Line">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.productline.FindProductLinesTest" >
+				<methods>
+					<include name="testGetProductLinesByValidCountryCodeAndValidStoreExternalKey" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Promotions">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.promotion.GetPromotionsTest" >
+				<methods>
+					<include name="getPromotionsByCodesTest" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Price Quote">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.pricequote.PriceQuotesTest" >
+				<methods>
+					<include name="testPriceQuotesMultipleLineItemsWithActiveAndCancelledPromoCode" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.pricequote.PriceQuotesForSubscriptionManagementTest" >
+				<methods>
+					<include name="testAddSeatsToSubscriptionWithAndWithOutAdditionalTaxes" />
+					<include name="testSubscriptionExtensionWithAndWithOutAdditionalTaxes" />
+				</methods>
+			</class>
+			<class name="com.autodesk.bsm.pelican.api.pricequote.PriceQuotesForSubscriptionRenewalTest" >
+				<methods>
+					<include name="getPriceQuoteForSubscriptionRenewalWithTwoLineItemsForCreditDaysAndPromotion" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Bic Release">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.bicrelease.BicReleaseTest" >
+				<methods>
+					<include name="productLineCodesAndDatesForRange" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+</suite>

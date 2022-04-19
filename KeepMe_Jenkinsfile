@@ -1,0 +1,91 @@
+#!/usr/bin/env groovy
+node("centos&&cloud") {
+
+    def branch = "${env.BRANCH_NAME}"
+    def svcPelicanCreds = "1a939c8e-55e0-4ffc-a07f-058f64da2491"
+    def deploymentSnapshotRepo = "snapshots::default::https://art-bobcat.autodesk.com/artifactory/team-pelican-snapshot-maven"
+    def deploymentReleaseRepo = "central::default::https://art-bobcat.autodesk.com/artifactory/team-pelican-release-maven"
+
+    def slackCreds = "ors_slack_token"
+    def slackChannel = "#bic-pelican-jenkins"
+    def slackDomain = "autodesk"
+    def status = "good"
+
+    def imageName = "maven:3.3.3-jdk-8"
+    try {
+        docker.image(imageName).pull()
+        docker.image(imageName).inside("-v /mnt/data/.m2:/.m2:rw") {
+            stage("Checkout") {
+                def pwd = pwd()
+                checkout scm
+                sh "git clean -fxd"
+            }
+
+            sh "git config core.autocrlf input"
+            sh "git config rerere.enable true"
+            sh "git config user.name ci-bot"
+            sh "git config user.email ci-bot@pelican.autodesk.com"
+
+            stage("Build") {
+                withCredentials([[$class: "FileBinding", credentialsId: "${svcPelicanCreds}", variable: "pelicansettings"]]) {
+                    sh "mvn clean -s ${pelicansettings} test -P FullRegression -DskipTests checkstyle:checkstyle findbugs:findbugs pmd:pmd -U package"
+                }
+            }
+            stage("Publish Reports") {
+                pmd canComputeNew: false, defaultEncoding: "", healthy: "", pattern: "**/pmd.xml", unHealthy: ""
+                checkstyle canComputeNew: false, pattern: "**/checkstyle-result.xml", healthy: "", unHealthy: ""
+                findbugs canComputeNew: false, pattern: "**/findbugsXml.xml", healthy: "", unHealthy: ""
+                timeout(time: 5, unit: 'MINUTES') {
+	                withSonarQubeEnv("pelican-sonar-instance") {
+	                    withCredentials([[$class: "FileBinding", credentialsId: "${svcPelicanCreds}", variable: "pelicansettings"]]) {
+	                        sh "mvn sonar:sonar -s ${pelicansettings} -Dsonar.analysis.mode=publish -Dsonar.organization=bms-e2"
+	                    }
+	                }
+                }
+            }
+
+            def pom = readMavenPom file: "pom.xml"
+            def developmentVersion = pom.version
+            def releaseVersion = pom.version.replace("-SNAPSHOT", "")
+            withCredentials([[$class: "FileBinding", credentialsId: "${svcPelicanCreds}", variable: "pelicansettings"]]) {
+                switch (branch) {
+                    case "develop":
+                        stage("Publish Artifact") {
+                            sh "mvn -B -s ${pelicansettings} -DaltDeploymentRepository=${deploymentSnapshotRepo} -DJOB_NAME=${env.JOB_NAME} -DBUILD_NUMBER=${env.BUILD_NUMBER} deploy"
+                        }
+                        break
+                    case "master":
+                        try {
+			                stage("Tag Release") {
+				                sh "git tag '${releaseVersion}'"
+				                sshagent(["ors_git_ssh_key_np"]) {
+				                		sh "git push --tags git@git.autodesk.com:bms-e2/pelican-autobot.git"
+				                }
+			                }
+                        } catch (error) {
+			                sh "echo ${error}"
+                        }
+                        stage("Publish Artifact") {
+                            withCredentials([[$class: "FileBinding", credentialsId: "${svcPelicanCreds}", variable: "pelicansettings"]]) {
+                                sh "mvn -B -s ${pelicansettings} -DaltDeploymentRepository=${deploymentReleaseRepo} -DJOB_NAME=${env.JOB_NAME} -DBUILD_NUMBER=${env.BUILD_NUMBER} deploy"
+                            }
+                        }
+                        break
+                    default:
+                        echo "Not publishing artifacts for PR builds."
+                        break
+                }
+            }
+        }
+    } catch (error) {
+        status = "warning"
+        throw error
+    }  finally {
+        stage("Notify") {
+            withCredentials([[$class: "StringBinding", credentialsId: "${slackCreds}", variable: "slacktoken"]]) {
+                slackSend(message: "Pelican CI/CD Notifier from " + env.BUILD_URL, teamDomain: "${slackDomain}", token: env.slacktoken, channel: "${slackChannel}", color: "${status}")
+            }
+        }
+    }
+
+}

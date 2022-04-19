@@ -1,0 +1,83 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Pelican Test Plan" parallel="tests" thread-count="3">
+	<test name="Bic Release">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.bicrelease" />
+		</packages>
+	</test>
+	<test name="Finance Report">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.financereport" />
+		</packages>
+	</test>
+	<test name="Item">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.item" />
+		</packages>
+	</test>
+	<test name="Item Instance">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.iteminstances" />
+		</packages>
+	</test>
+	<test name="Item Type">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.itemtype" />
+		</packages>
+	</test>
+	<test name="Offerings">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.offerings" />
+		</packages>
+	</test>
+	<test name="Payment Profile">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.paymentprofile" />
+		</packages>
+	</test>
+	<test name="Price Quotes">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.pricequote" />
+		</packages>
+	</test>
+	<test name="Product Line">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.productline" />
+		</packages>
+	</test>
+	<test name="Promotion">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.promotion" />
+		</packages>
+	</test>
+	<test name="Purchase Order">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.purchaseorder" />
+		</packages>
+	</test>
+	<test name="Store">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.store" />
+		</packages>
+	</test>
+	<test name="Subscription Plan">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.subscriptionplan" />
+		</packages>
+	</test>
+	<test name="Triggers Api">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.triggers" />
+		</packages>
+	</test>
+	<test name="User">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.user" />
+		</packages>
+	</test>
+	<test name="User Offerings">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.userofferings" />
+		</packages>
+	</test>
+</suite>

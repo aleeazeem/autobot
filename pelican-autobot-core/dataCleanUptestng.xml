@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Pelican Data CleanUP Stored Procedure Script"
+	preserve-order="true">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="DataCleanUpScript">
+		<classes>
+			<class
+				name="com.autodesk.bsm.pelican.datacleanup.DataCleanupStoreProcedureScript" />
+		</classes>
+	</test>
+</suite>

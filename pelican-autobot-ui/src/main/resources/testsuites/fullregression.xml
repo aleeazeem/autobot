@@ -1,0 +1,98 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Pelican Test Plan" parallel="tests" thread-count="3">
+	<test name="Actor">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.actors" />
+		</packages>
+	</test>
+	<test name="Show Hives">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.bankingconfig" />
+		</packages>
+	</test>
+	<test name="Bic Release">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.bicrelease" />
+		</packages>
+	</test>
+	<test name="Currency">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.currency" />
+		</packages>
+	</test>
+	<test name="Descriptor Definition">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.descriptor" />
+		</packages>
+	</test>
+	<test name="Events">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.events" />
+		</packages>
+	</test>
+	<test name="Features">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.features" />
+		</packages>
+	</test>
+	<test name="Finance Report">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.financereport" />
+		</packages>
+	</test>
+	<test name="Licensing Model">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.licensingmodel" />
+		</packages>
+	</test>
+	<test name="Offerings">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.offerings" />
+		</packages>
+	</test>
+	<test name="Product Line">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.productline" />
+		</packages>
+	</test>
+	<test name="Promotion">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.promotion" />
+		</packages>
+	</test>
+	<test name="Purchase Order">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.purchaseorder" />
+		</packages>
+	</test>
+	<test name="Store">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.store" />
+		</packages>
+	</test>
+	<test name="Store Type">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.storetype" />
+		</packages>
+	</test>
+	<test name="Subscription">
+		<groups>
+			<run>
+				<exclude name="excludedClass" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.subscription" />
+		</packages>
+	</test>
+	<test name="Subscription Plan">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.subscriptionplan" />
+		</packages>
+	</test>
+	<test name="User">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.ui.user" />
+		</packages>
+	</test>
+</suite>

@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Pelican Test Plan">
+	<test name="Purchase Order">
+		<classes>
+			<class
+				name="com.autodesk.bsm.pelican.ui.cart.refund.RefundPurchaseOrderDemoFamilyTest" />
+		</classes>
+	</test>
+	<test name="Subscription">
+		<classes>
+			<class
+				name="com.autodesk.bsm.pelican.ui.cart.renewal.RenewalPurchaseOrderDemoFamilyTest" />
+		</classes>
+	</test>
+</suite>

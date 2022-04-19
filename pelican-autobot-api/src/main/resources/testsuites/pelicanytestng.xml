@@ -1,0 +1,53 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PelicanY Test Plan" parallel="tests" thread-count="3">
+	<test name="Bic Release">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.bicrelease" />
+		</packages>
+	</test>
+	<test name="Item">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.item" />
+		</packages>
+	</test>
+	<test name="Item Type">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.itemtype" />
+		</packages>
+	</test>
+	<test name="Offerings">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.offerings" />
+		</packages>
+	</test>
+	<test name="Price Quotes">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.pricequote" />
+		</packages>
+	</test>
+	<test name="Product Line">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.productline" />
+		</packages>
+	</test>
+	<test name="Promotion">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.promotion" />
+		</packages>
+	</test>
+	<test name="Store">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.store" />
+		</packages>
+	</test>
+	<test name="Subscription Plan">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.subscriptionplan" />
+		</packages>
+	</test>
+	<test name="User Offerings">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.api.userofferings" />
+		</packages>
+	</test>
+</suite>

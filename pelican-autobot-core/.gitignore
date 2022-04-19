@@ -1,0 +1,15 @@
+/bin/*.class
+*.class
+bin/*.class
+/target/
+/test-output/
+.DS_Store
+.project
+.settings
+.classpath
+.metadata
+*.iml
+*.jpeg
+/sampletestng.xml
+sampletestng.xml
+.idea/

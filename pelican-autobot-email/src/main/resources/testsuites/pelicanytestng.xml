@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PelicanY Test Plan" parallel="classes" thread-count="1">
+	<test name="Product Line">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.email.productline" />
+		</packages>
+	</test>
+</suite>

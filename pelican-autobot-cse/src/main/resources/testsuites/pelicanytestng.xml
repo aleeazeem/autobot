@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PelicanY Test Plan" parallel="tests" thread-count="1">
+	<test name="Basic Offerings">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.cse.basicoffering" />
+		</packages>
+	</test>
+	<test name="Features">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.cse.features" />
+		</packages>
+	</test>
+	<test name="Store">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.cse.store" />
+		</packages>
+	</test>
+	<test name="Subscription Plan">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.cse.subscriptionplan" />
+		</packages>
+	</test>
+</suite>

@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Pelican Test Plan" parallel="classes" thread-count="3">
+	<test name="Featureflag">
+		<classes>
+			<class name="com.autodesk.bsm.pelican.api.offerings.GetOfferingsTest" />
+			<class name="com.autodesk.bsm.pelican.api.purchaseorder.GetPurchaseOrdersTest" />
+		</classes>
+	</test>
+</suite>
+
+
+
+
+

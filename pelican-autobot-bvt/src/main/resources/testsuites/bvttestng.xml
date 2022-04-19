@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Pelican BVT Test Plan" preserve-order="true">
+	<test name="BVT">
+		<packages>
+			<package name="com.autodesk.bsm.pelican.bvt" />
+		</packages>
+	</test>
+</suite>
